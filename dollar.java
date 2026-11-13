@@ -2,14 +2,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-class Dollar extends Money {
-    Dollar(int amount) {
-        this.amount = amount;
-    }
-
-    Money times(int multiplier) {
-        return new Dollar(amount * multiplier);
-    }
+public class DollarTest {
 
     public void testMultiplication() {
         Money five = Money.dollar(5);
@@ -29,5 +22,10 @@ class Dollar extends Money {
         assertTrue(Money.franc(5).equals(Money.franc(5)));
         assertFalse(Money.franc(5).equals(Money.franc(6)));
         assertFalse(Money.franc(5).equals(Money.dollar(5)));
+    }
+
+    public void testCurrency() {
+        assertEquals("USD", Money.dollar(1).currency());
+        assertEquals("CHF", Money.franc(1).currency());
     }
 }
